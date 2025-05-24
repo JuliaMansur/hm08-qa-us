@@ -25,7 +25,7 @@ describe('Create an order', () => {
         const tCard = await $(page.tCard);
         await tCard.waitForDisplayed();
         await tCard.click();
-        await browser.pause(1000);
+        //await browser.pause(1000);
         await expect(await $(page.tCard)).toBeExisting();
     })
 
@@ -51,7 +51,7 @@ describe('Create an order', () => {
     it('should order requirement', async () => {
         await browser.url(`/`);
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
-         const tCard = await $(page.tCard);
+        const tCard = await $(page.tCard);
         await tCard.waitForDisplayed();
         await tCard.click();
         const blanketAndHandkerchiefsLabel = await $(page.blanketAndHandkerchiefsLabel);
@@ -59,19 +59,35 @@ describe('Create an order', () => {
         const blanketAndHandkerchiefs = await $(page.blanketAndHandkerchiefs);
         await blanketAndHandkerchiefs.scrollIntoView();
         await blanketAndHandkerchiefs.click();
-        await browser.pause(1000);
+        //await browser.pause(1000);
         const iceBucketButton = await $(page.iceBucketButton);
         await iceBucketButton.click();
-        await browser.pause(1000);
+        //await browser.pause(1000);
         const iceCreamValue = await $(page.iceCreamValue);
         await iceCreamValue.scrollIntoView();
         const iceCreamPlusButton = await $(page.iceCreamPlusButton);
         await iceCreamPlusButton.click();
-        await expect(helper.getIceCreamValue()).toBe(1);
-        await browser.pause(1000);
+        await browser.waitUntil(
+    async () => (helper.getIceCreamValue()) === 1,
+    {
+        timeout: 3000,
+        timeoutMsg: 'Expected ice cream value to be 1 after first click'
+    }
+);
+       // await expect(helper.getIceCreamValue()).toBe(1);
+        //await iceCreamValue.scrollIntoView();
+        await iceCreamPlusButton.waitForClickable();
+        //await browser.pause(1000);
         await iceCreamPlusButton.click();
-        await expect(helper.getIceCreamValue()).toBe(2);
-        await browser.pause(1000);
+        await browser.waitUntil(
+    async () => (helper.getIceCreamValue()) === 2,
+    {
+        timeout: 3000,
+        timeoutMsg: 'Expected ice cream value to be 2 after second click'
+    }
+);
+        //await expect(helper.getIceCreamValue()).toBe(2);
+        //await browser.pause(1000);
 
 })
     it('should open the car search modal', async () => {

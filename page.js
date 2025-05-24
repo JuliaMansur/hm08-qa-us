@@ -1,4 +1,4 @@
-const { getCreditCardDetails } = require("./helper");
+//const { getCreditCardDetails } = require("./helper");
 
 module.exports = {
     // Inputs
@@ -10,7 +10,7 @@ module.exports = {
     cardInput: '#number',
     messageToTheDriverField: '//*[@id="comment"]', 
     labelField: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[3]/div/label',
-    tCard: '#tCard',
+    //tCard: '#tCard',
     blanketAndHandkerchiefs: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div',
     blanketAndHandkerchiefsLabel: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[1]',
 
@@ -20,7 +20,7 @@ module.exports = {
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
     taxiButton: '//div[starts-with(text(), "Taxi")]',
-    tCard: '//div[starts-with(text(), "Supportive")]',
+    tCard: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]',
     ppValueArrow: '.pp-text',
     ppPlus: 'div=Add card',
     linkButton: 'button=Link',
@@ -78,7 +78,7 @@ module.exports = {
     fillCard: async function(cardNumber, code) {
         const ppValueArrow = await $(this.ppValueArrow)
         await ppValueArrow.click()
-        await browser.pause(5000)
+        //await browser.pause(5000)
         const ppPlus = await $(this.ppPlus)
         await ppPlus.click()
         const cardInput = await $(this.cardInput)

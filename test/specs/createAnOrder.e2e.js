@@ -54,24 +54,25 @@ describe('Create an order', () => {
          const tCard = await $(page.tCard);
         await tCard.waitForDisplayed();
         await tCard.click();
-       // await browser.pause(1000);
-        //const reqsArrowButton = await $(page.reqsArrowButton);
-        //await reqsArrowButton.click();
-        // browser.pause(5000);
         const blanketAndHandkerchiefsLabel = await $(page.blanketAndHandkerchiefsLabel);
         await blanketAndHandkerchiefsLabel.scrollIntoView();
         const blanketAndHandkerchiefs = await $(page.blanketAndHandkerchiefs);
         await blanketAndHandkerchiefs.scrollIntoView();
         await blanketAndHandkerchiefs.click();
-        await browser.pause(5000);
+        await browser.pause(1000);
         const iceBucketButton = await $(page.iceBucketButton);
         await iceBucketButton.click();
+        await browser.pause(1000);
         const iceCreamValue = await $(page.iceCreamValue);
         await iceCreamValue.scrollIntoView();
         const iceCreamPlusButton = await $(page.iceCreamPlusButton);
         await iceCreamPlusButton.click();
+        await expect(helper.getIceCreamValue()).toBe(1);
+        await browser.pause(1000);
         await iceCreamPlusButton.click();
         await expect(helper.getIceCreamValue()).toBe(2);
+        await browser.pause(1000);
+
 })
     it('should open the car search modal', async () => {
         await browser.url(`/`);

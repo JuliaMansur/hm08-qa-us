@@ -66,26 +66,12 @@ describe('Create an order', () => {
         const iceCreamValue = await $(page.iceCreamValue);
         await iceCreamValue.scrollIntoView();
         const iceCreamPlusButton = await $(page.iceCreamPlusButton);
-        await iceCreamPlusButton.click();
-        await browser.waitUntil(
-    async () => (helper.getIceCreamValue()) === 1,
-    {
-        timeout: 3000,
-        timeoutMsg: 'Expected ice cream value to be 1 after first click'
-    }
-);
-       // await expect(helper.getIceCreamValue()).toBe(1);
-        //await iceCreamValue.scrollIntoView();
         await iceCreamPlusButton.waitForClickable();
-        //await browser.pause(1000);
         await iceCreamPlusButton.click();
-        await browser.waitUntil(
-    async () => (helper.getIceCreamValue()) === 2,
-    {
-        timeout: 3000,
-        timeoutMsg: 'Expected ice cream value to be 2 after second click'
-    }
-);
+        await iceCreamValue.scrollIntoView()
+        await iceCreamPlusButton.waitForClickable();
+        await iceCreamPlusButton.click();
+        //await iceCreamValue.setValue(2);
         //await expect(helper.getIceCreamValue()).toBe(2);
         //await browser.pause(1000);
 

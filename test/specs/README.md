@@ -13,12 +13,12 @@ This project contains automated tests for the Urban Road application. There will
 5. On config.js, add the server URL
 6. Using the templates, write the code for testing each test in the createAnOrder.e2e.js file located in the test/specs folder.
 ## Writing & Organizing Tests
-Write the page.js file
-Write the helper.js file
-Write the tests
+1. Write the page.js file
+2. Write the helper.js file
+3. Write the tests
 ## Running the Tests
-To run all tests, open a terminal in VS Code and run each test by itself using npm wdio
-Run all tests together to check the flow using npm wdio
+1. To run all tests, open a terminal in VS Code and run each test by itself using npm wdio
+2. Run all tests together to check the flow using npm wdio
 ## Server
-Use the server to check how each test should flow
-Use the server to find the right selector for each test
+1. Use the server to check how each test should flow
+2. Use the server to find the right selector for each test

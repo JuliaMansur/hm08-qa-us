@@ -10,7 +10,6 @@ module.exports = {
     cardInput: '#number',
     messageToTheDriverField: '//*[@id="comment"]', 
     labelField: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[3]/div/label',
-    //tCard: '#tCard',
     blanketAndHandkerchiefs: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div',
     blanketAndHandkerchiefsLabel: '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[1]',
 

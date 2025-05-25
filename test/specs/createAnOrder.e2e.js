@@ -33,6 +33,7 @@ describe('Create an order', () => {
         await browser.url(`/`);
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         await page.fillCard('123400004321', '12');
+        await expect(await $(page.cardInput)).toHaveValue('123400004321');
     })
 
    it('should send message to the driver', async () => {
@@ -42,10 +43,11 @@ describe('Create an order', () => {
         await labelField.click();
         const messageToTheDriverField = await $(page.messageToTheDriverField);
         await messageToTheDriverField.waitForDisplayed();
-        await messageToTheDriverField.waitForClickable(); // Wait until it's actually clickable
+        await messageToTheDriverField.waitForClickable(); 
         await messageToTheDriverField.setValue('Get some Whiskey');
         const comment = 'Get some Whiskey';
         await messageToTheDriverField.setValue(comment);
+        await expect(await $(page.messageToTheDriverField)).toHaveValue(comment);
     })
 
     it('should order requirement', async () => {
@@ -72,8 +74,11 @@ describe('Create an order', () => {
         await iceCreamPlusButton.waitForClickable();
         await iceCreamPlusButton.click();
         //await iceCreamValue.setValue(2);
-        //await expect(helper.getIceCreamValue()).toBe(2);
-        //await browser.pause(1000);
+        await expect(helper.getIceCreamValue()).toBeGreaterThanOrEqual(0);
+        await expect(helper.getIceCreamValue()).toBeLessThanOrEqual(2);
+        await iceCreamValue.scrollIntoView()
+        await iceCreamPlusButton.waitForClickable();
+        await iceCreamPlusButton.click();
 
 })
     it('should open the car search modal', async () => {
